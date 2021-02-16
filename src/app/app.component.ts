@@ -10,16 +10,7 @@ export class AppComponent {
 
   palavra = 'Palavrassa bullet';
 
-  contador = 0;
-
   eventoRecebido($event) {
     console.log('AppComponent: EVENTO RECEBIDO! ', $event);
-  }
-
-  contadorIncrement() {
-    this.contador++;
-  }
-  contadorDecrement() {
-    this.contador--;
   }
 }

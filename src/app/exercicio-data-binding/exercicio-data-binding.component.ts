@@ -15,6 +15,9 @@ export class ExercicioDataBindingComponent implements OnInit {
   accessibilityText: string = 'Texto acessível';
 
   valorDoInput = '';
+  contador = 0;
+
+  valorContador = 10;
 
   constructor() {
     setTimeout(() => {
@@ -44,5 +47,12 @@ export class ExercicioDataBindingComponent implements OnInit {
   onClickBotaoEmissor($event) {
     console.log('Devo emitir informações para o elemento pai');
     this.clicado.emit($event);
+  }
+
+  contadorIncrement() {
+    this.contador++;
+  }
+  contadorDecrement() {
+    this.contador--;
   }
 }

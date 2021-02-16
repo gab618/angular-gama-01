@@ -1,3 +1,15 @@
+<h5>Exercicio contador</h5>
+<!-- minha resolução -->
+<!-- <app-contador
+  [contador]="contador"
+  (increment)="contadorIncrement()"
+  (decrement)="contadorDecrement()"
+></app-contador> -->
+
+<app-exercicio-contador [(valor)]="valorContador"></app-exercicio-contador>
+{{ valorContador }}
+<br /><br />
+
 <button (click)="onClickBotaoEmissor($event)">
   Emitir informação de click
 </button>
