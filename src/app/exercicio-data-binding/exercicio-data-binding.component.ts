@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-exercicio-data-binding',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exercicio-data-binding.component.scss'],
 })
 export class ExercicioDataBindingComponent implements OnInit {
+  @Input() palavra: string;
+
   imageURL: string = 'http://lorempixel.com.br/350/350';
   initialValue: string = 'Meu valor inicial';
   isDisabled: boolean = true;
