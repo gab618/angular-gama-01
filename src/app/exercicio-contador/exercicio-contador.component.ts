@@ -11,10 +11,10 @@ export class ExercicioContadorComponent {
 
   incrementar() {
     this.valor = this.valor + 1;
-    // this.valorChange.emit(this.valor);
+    this.valorChange.emit(this.valor);
   }
   decrementar() {
     this.valor = this.valor + 1;
-    // this.valorChange.emit(this.valor);
+    this.valorChange.emit(this.valor);
   }
 }

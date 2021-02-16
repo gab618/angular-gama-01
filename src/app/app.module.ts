@@ -9,9 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { ExercicioDataBindingComponent } from './exercicio-data-binding/exercicio-data-binding.component';
 import { ContadorComponent } from './contador/contador.component';
 import { ExercicioContadorComponent } from './exercicio-contador/exercicio-contador.component';
+import { ExercicioDiretivasComponent } from './exercicio-diretivas/exercicio-diretivas.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, FooterComponent, ExercicioDataBindingComponent, ContadorComponent, ExercicioContadorComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, FooterComponent, ExercicioDataBindingComponent, ContadorComponent, ExercicioContadorComponent, ExercicioDiretivasComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

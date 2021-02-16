@@ -1,0 +1,12 @@
+<button (click)="trocarValor($event)">?</button>
+
+<div *ngIf="exibir; else elseBlock">To dentro do ngIf</div>
+<ng-template #elseBlock>
+  <div>Esse é o else</div>
+</ng-template>
+<div *ngIf="soma(5, 6) > 10">To dentro do ngIf >10</div>
+<hr />
+<div *ngIf="exibir; then thenBlock; else elseBlock2"></div>
+
+<ng-template #thenBlock> <div>Esse é o then</div> </ng-template>
+<ng-template #elseBlock2> <div>Esse é o else2</div> </ng-template>
