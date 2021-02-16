@@ -9,4 +9,8 @@ export class AppComponent {
   title = 'Meu título massa';
 
   palavra = 'Palavrassa bullet';
+
+  eventoRecebido($event) {
+    console.log('AppComponent: EVENTO RECEBIDO! ', $event);
+  }
 }

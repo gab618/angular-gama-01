@@ -1,3 +1,18 @@
+<button (click)="onClickBotaoEmissor($event)">
+  Emitir informação de click
+</button>
+
+<br /><br />
+
+<button (click)="onClick($event)" (mouseenter)="passouMouse()">
+  Clique em mim
+</button>
+<input [value]="valorDoInput" (keyup)="digitouAlgo($event)" />
+
+<span>Valor do Input: {{ valorDoInput }}</span>
+
+<hr />
+
 <h2>Palavra: {{ palavra }}</h2>
 <img [src]="getImageURL()" alt="image" />
 <!-- <img [src]="imageURL" alt="image" /> -->

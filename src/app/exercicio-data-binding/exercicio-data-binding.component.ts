@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-exercicio-data-binding',
@@ -7,11 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ExercicioDataBindingComponent implements OnInit {
   @Input() palavra: string;
+  @Output() clicado = new EventEmitter();
 
   imageURL: string = 'http://lorempixel.com.br/350/350';
   initialValue: string = 'Meu valor inicial';
   isDisabled: boolean = true;
   accessibilityText: string = 'Texto acessível';
+
+  valorDoInput = '';
 
   constructor() {
     setTimeout(() => {
@@ -23,5 +26,23 @@ export class ExercicioDataBindingComponent implements OnInit {
 
   getImageURL() {
     return this.imageURL;
+  }
+
+  onClick(e) {
+    console.log('Clicou no botão - ');
+    console.log(e.target);
+  }
+
+  passouMouse() {
+    console.log('olha o mouse passando!');
+  }
+
+  digitouAlgo(e) {
+    console.log(`É o digitas: ${e.target.value}`);
+  }
+
+  onClickBotaoEmissor($event) {
+    console.log('Devo emitir informações para o elemento pai');
+    this.clicado.emit($event);
   }
 }
