@@ -1,0 +1,5 @@
+<p>
+  Contador: {{ contador }} <span>{{ contador >= 0 ? "🔥" : "💧" }}</span>
+</p>
+<button (click)="handleIncrement($event)">+ 🔥</button>
+<button (click)="handleDecrement($event)">- 💧</button>
