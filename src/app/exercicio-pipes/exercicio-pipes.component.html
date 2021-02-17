@@ -1,6 +1,23 @@
-<p>exercicio-pipes works!</p>
+<ul>
+  <li *ngFor="let item of compras">
+    <p>
+      Produto: <b>{{ item.produto | uppercase }}</b>
+    </p>
+    <p>Valor: {{ item.valor | currency: "BRL" }}</p>
+    <p>Quantidade: {{ item.quantidade }}</p>
+    <p>
+      Peso: {{ item.peso ? (item.peso | number: "1.1-2") + " Kg" : "Sem peso" }}
+    </p>
+    <p>
+      Data: {{ item.data | date: "EEEE, dd 'de' MMMM 'de' yyyy, 'às' HH:mm" }}
+    </p>
+    <hr />
+  </li>
+</ul>
+
+<!-- <p>exercicio-pipes works!</p>
 
 <p>Titulo: {{ filme.titulo | uppercase }}</p>
 <p>Avaliação: {{ filme.estrelas | number: "1.1-2" }}</p>
 <p>Preço aluguel: {{ filme.precoAluguel | currency: "BRL" }}</p>
-<p>Data de lançamento: {{ filme.dataLancamento | date }}</p>
+<p>Data de lançamento: {{ filme.dataLancamento | date }}</p> -->
