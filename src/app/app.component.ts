@@ -10,6 +10,14 @@ export class AppComponent {
 
   palavra = 'Palavrassa bullet';
 
+  showHeader = true;
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.showHeader = false;
+    }, 1000 * 3);
+  }
+
   eventoRecebido($event) {
     console.log('AppComponent: EVENTO RECEBIDO! ', $event);
   }
