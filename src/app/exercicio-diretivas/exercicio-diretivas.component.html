@@ -1,3 +1,5 @@
+<h4>*ngIf</h4>
+
 <button (click)="trocarValor($event)">?</button>
 
 <div *ngIf="exibir; else elseBlock">To dentro do ngIf</div>
@@ -10,3 +12,17 @@
 
 <ng-template #thenBlock> <div>Esse é o then</div> </ng-template>
 <ng-template #elseBlock2> <div>Esse é o else2</div> </ng-template>
+
+<hr />
+
+<h4>*ngFor</h4>
+
+<ul>
+  <li *ngFor="let fruta of listaFrutas">{{ fruta }}</li>
+</ul>
+
+<ul>
+  <li *ngFor="let carro of carrosLista; let idx = index">
+    {{ idx + 1 }}) {{ carro.placa }} - {{ carro.cor }}
+  </li>
+</ul>

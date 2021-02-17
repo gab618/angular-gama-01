@@ -8,6 +8,23 @@ import { Component, OnInit } from '@angular/core';
 export class ExercicioDiretivasComponent {
   exibir = true;
 
+  listaFrutas = ['Maçã', 'Limão', 'Morango', 'Biscoito'];
+
+  carrosLista = [
+    {
+      placa: 'ABC-1234',
+      cor: 'preto',
+    },
+    {
+      placa: 'WSA-1234',
+      cor: 'verde',
+    },
+    {
+      placa: 'XYZ-1234',
+      cor: 'vermelhor',
+    },
+  ];
+
   trocarValor($event) {
     this.exibir = !this.exibir;
   }
