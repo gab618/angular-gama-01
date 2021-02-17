@@ -12,11 +12,11 @@ export class AppComponent {
 
   showHeader = true;
 
-  ngOnInit() {
-    setTimeout(() => {
-      this.showHeader = false;
-    }, 1000 * 3);
-  }
+  // ngOnInit() {
+  //   setTimeout(() => {
+  //     this.showHeader = false;
+  //   }, 1000 * 3);
+  // }
 
   eventoRecebido($event) {
     console.log('AppComponent: EVENTO RECEBIDO! ', $event);
