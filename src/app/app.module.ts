@@ -10,9 +10,10 @@ import { ExercicioDataBindingComponent } from './exercicio-data-binding/exercici
 import { ContadorComponent } from './contador/contador.component';
 import { ExercicioContadorComponent } from './exercicio-contador/exercicio-contador.component';
 import { ExercicioDiretivasComponent } from './exercicio-diretivas/exercicio-diretivas.component';
+import { ExercicioNgclassComponent } from './exercicio-ngclass/exercicio-ngclass.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, FooterComponent, ExercicioDataBindingComponent, ContadorComponent, ExercicioContadorComponent, ExercicioDiretivasComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, FooterComponent, ExercicioDataBindingComponent, ContadorComponent, ExercicioContadorComponent, ExercicioDiretivasComponent, ExercicioNgclassComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,11 @@
+<p [ngClass]="isGreen ? 'verde' : 'vermelho'">exercicio-ngclass works!</p>
+<button (click)="handleColor()">?</button>
+
+<p
+  [ngClass]="{
+    'verde borda-verde': isGreen,
+    'vermelho borda-vermelho': !isGreen
+  }"
+>
+  samba
+</p>
