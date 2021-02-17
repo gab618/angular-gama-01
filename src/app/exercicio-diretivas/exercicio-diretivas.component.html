@@ -1,4 +1,12 @@
-<h4>*ngIf</h4>
+<div *ngFor="let item of MEMES_AGRUPADOS_POR_CATEGORIA">
+  <h4>{{ item.categoria }}</h4>
+  <div *ngFor="let meme of item.memes; let isEven = even">
+    <img [src]="PREFIXO_IMAGEM_URL + '/' + meme.imagemURL" *ngIf="isEven" />
+    <h5 *ngIf="!isEven">PAR</h5>
+  </div>
+</div>
+
+<!-- <h4>*ngIf</h4>
 
 <button (click)="trocarValor($event)">?</button>
 
@@ -25,4 +33,4 @@
   <li *ngFor="let carro of carrosLista; let idx = index">
     {{ idx + 1 }}) {{ carro.placa }} - {{ carro.cor }}
   </li>
-</ul>
+</ul> -->
