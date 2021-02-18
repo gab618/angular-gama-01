@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Transacao } from './extrato.interfaces';
 import { ExtratoService } from './extrato.service';
 
 @Component({
@@ -16,11 +17,4 @@ export class ExtratoComponent implements OnInit {
       this.transacoes = response;
     });
   }
-}
-export interface Transacao {
-  id: number;
-  data: Date;
-  descricao: string;
-  valor: number;
-  categoria: string;
 }
