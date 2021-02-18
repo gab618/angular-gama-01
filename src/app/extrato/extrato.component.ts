@@ -7,11 +7,20 @@ import { ExtratoService } from './extrato.service';
   styleUrls: ['./extrato.component.scss'],
 })
 export class ExtratoComponent implements OnInit {
-  transacoes = [];
+  transacoes: Transacao[];
 
   constructor(private extratoService: ExtratoService) {}
 
   ngOnInit(): void {
-    this.transacoes = this.extratoService.getTransacoes();
+    this.extratoService.getTransacoes().subscribe((response) => {
+      this.transacoes = response;
+    });
   }
+}
+export interface Transacao {
+  id: number;
+  data: Date;
+  descricao: string;
+  valor: number;
+  categoria: string;
 }
