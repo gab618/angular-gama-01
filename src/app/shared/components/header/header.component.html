@@ -1,3 +1,15 @@
 <header class="header">
   <h1 class="header__title">{{ title }}</h1>
+  <ul class="nav-bar-list">
+    <li>
+      <a
+        routerLink=""
+        routerLinkActive="ativado"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+      >
+      <a routerLink="extrato" routerLinkActive="ativado">Extrato</a>
+      <a routerLink="login" routerLinkActive="ativado">Login</a>
+    </li>
+  </ul>
 </header>
