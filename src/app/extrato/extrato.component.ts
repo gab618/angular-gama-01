@@ -9,12 +9,27 @@ import { ExtratoService } from './extrato.service';
 })
 export class ExtratoComponent implements OnInit {
   transacoes: Transacao[];
+  loading: boolean;
+  erroNoLoad: boolean;
 
   constructor(private extratoService: ExtratoService) {}
 
   ngOnInit(): void {
-    this.extratoService.getTransacoes().subscribe((response) => {
-      this.transacoes = response;
-    });
+    this.carregarExtrato();
+  }
+
+  carregarExtrato() {
+    this.loading = true;
+    this.erroNoLoad = false;
+    this.extratoService.getTransacoes().subscribe(
+      (response) => {
+        this.loading = false;
+        this.transacoes = response;
+      },
+      (error) => {
+        this.erroNoLoad = true;
+        this.loading = false;
+      }
+    );
   }
 }
