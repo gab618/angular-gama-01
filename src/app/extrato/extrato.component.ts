@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Transacao } from './extrato.interfaces';
 import { ExtratoService } from './extrato.service';
 
-import { finalize } from 'rxjs/operators';
+import { finalize, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-extrato',
@@ -13,6 +13,7 @@ export class ExtratoComponent implements OnInit {
   transacoes: Transacao[];
   loading: boolean;
   erroNoLoad: boolean;
+  page = 1;
 
   constructor(private extratoService: ExtratoService) {}
 
@@ -23,9 +24,11 @@ export class ExtratoComponent implements OnInit {
   carregarExtrato() {
     this.loading = true;
     this.erroNoLoad = false;
+
     this.extratoService
-      .getTransacoes()
+      .getTransacoes(this.page)
       .pipe(
+        take(1),
         finalize(() => {
           this.loading = false;
         })
@@ -43,5 +46,15 @@ export class ExtratoComponent implements OnInit {
   onError(error: any) {
     this.erroNoLoad = true;
     console.error(error);
+  }
+
+  proximaPagina() {
+    this.page = this.page + 1;
+    this.carregarExtrato();
+  }
+
+  paginaAnterior() {
+    this.page = this.page - 1;
+    this.carregarExtrato();
   }
 }
