@@ -1,31 +1,45 @@
 import { Injectable } from '@angular/core';
+import { User } from 'src/app/login/login.interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  user: User;
+  token: string;
   constructor() {}
 
   setUser(user: any) {
     localStorage.setItem('user', JSON.stringify(user));
+    this.user = user;
   }
 
   getUser() {
-    const user = localStorage.getItem('user');
-    if (user) {
-      return JSON.parse(user);
+    if (this.user) {
+      return this.user;
+    }
+
+    const localUser = localStorage.getItem('user');
+    if (localUser) {
+      this.user = JSON.parse(localUser);
+      return this.user;
     }
     return null;
   }
 
   setToken(token: any) {
-    localStorage.setItem('token', JSON.stringify(token));
+    this.token = token;
+    localStorage.setItem('token', token);
   }
 
   getToken() {
+    if (this.token) {
+      return this.token;
+    }
+
     const token = localStorage.getItem('token');
     if (token) {
-      return JSON.parse(token);
+      return token;
     }
     return null;
   }
