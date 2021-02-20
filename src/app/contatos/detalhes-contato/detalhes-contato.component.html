@@ -1,0 +1,25 @@
+<div class="container text-center p-5">
+  <div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <div *ngIf="loadError">
+    <h2>Deu erro :(</h2>
+    <button class="btn btn-secondary" (click)="carregarContatos()">
+      Tentar novamente
+    </button>
+  </div>
+
+  <ul *ngIf="!loadError && !loading" class="list-group">
+    <li class="list-group-item active" aria-current="true">
+      {{ contactData.nome }}
+    </li>
+    <li class="list-group-item">CPF: {{ contactData.cpf }}</li>
+    <li class="list-group-item">Banco: {{ contactData.banco }}</li>
+    <li class="list-group-item">Agência: {{ contactData.ag }}</li>
+    <li class="list-group-item">CC: {{ contactData.cc }}</li>
+    <a routerLink="/contatos" class="list-group-item list-group-item-action"
+      >Voltar</a
+    >
+  </ul>
+</div>

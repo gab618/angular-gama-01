@@ -13,6 +13,7 @@ import { ExtratoComponent } from './extrato/extrato.component';
 import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
 import { SharedModule } from './shared/shared.module';
 import { ContatosComponent } from './contatos/contatos.component';
+import { DetalhesContatoComponent } from './contatos/detalhes-contato/detalhes-contato.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -25,6 +26,7 @@ registerLocaleData(localePt, 'pt');
     ExtratoComponent,
     NaoEncontradoComponent,
     ContatosComponent,
+    DetalhesContatoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule, HttpClientModule],
   providers: [
