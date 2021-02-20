@@ -1,3 +1,4 @@
+<h2>{{ login.email }}</h2>
 <div class="container text-center">
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form-signin pt5">
     <div class="p-2">
@@ -6,7 +7,7 @@
         class="form-control"
         placeholder="Email"
         name="email"
-        ngModel
+        [(ngModel)]="login.email"
       />
     </div>
     <div class="p-2">
@@ -15,7 +16,7 @@
         class="form-control"
         placeholder="password"
         name="password"
-        ngModel
+        [(ngModel)]="login.password"
       />
     </div>
     <div class="p-2">
