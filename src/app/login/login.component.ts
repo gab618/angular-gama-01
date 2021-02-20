@@ -1,5 +1,7 @@
+import { error } from '@angular/compiler/src/util';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +12,12 @@ export class LoginComponent implements OnInit {
   @ViewChild('emailInput') emailInput: ElementRef;
   @ViewChild('passwordInput') passwordInput: ElementRef;
 
-  login = {
+  user = {
     email: '',
     password: '',
   };
 
-  constructor() {}
+  constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {}
 
@@ -36,7 +38,19 @@ export class LoginComponent implements OnInit {
 
       return;
     }
-    console.log(form);
+    this.login();
+  }
+
+  login() {
+    this.loginService.logar(this.user.email, this.user.password).subscribe(
+      (response) => {
+        console.log('sucesso');
+        console.log(response);
+      },
+      (error) => {
+        console.log('nao logou :', error);
+      }
+    );
   }
 
   isValid(nomeControle: string, form: NgForm) {
