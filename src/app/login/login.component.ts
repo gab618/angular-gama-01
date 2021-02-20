@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   login = {
-    email: 'email@email.com',
-    password: '12345678',
+    email: '',
+    password: '',
   };
 
   constructor() {}
@@ -16,6 +17,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(form) {
+    if (!form.valid) {
+      form.controls.email.markAsTouched();
+      form.controls.password.markAsTouched();
+      console.log('form invalido');
+      return;
+    }
     console.log(form);
+  }
+
+  isValid(nomeControle: string, form: FormGroup) {
+    if (!form.controls[nomeControle]) {
+      return false;
+    }
+
+    return (
+      form.controls[nomeControle].invalid && form.controls[nomeControle].touched
+    );
   }
 }

@@ -8,7 +8,10 @@
         placeholder="Email"
         name="email"
         [(ngModel)]="login.email"
+        email
+        required
       />
+      <p *ngIf="isValid('email', form)">Email invalido</p>
     </div>
     <div class="p-2">
       <input
@@ -17,7 +20,9 @@
         placeholder="password"
         name="password"
         [(ngModel)]="login.password"
+        required
       />
+      <p *ngIf="isValid('password', form)">Senha invlaida</p>
     </div>
     <div class="p-2">
       <button class="btn btn-lg btn-primary btn-block" type="submit">
