@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   };
   loading: boolean;
   loginError: boolean;
+  errorMsg: string;
 
   constructor(private loginService: LoginService, private router: Router) {}
 
@@ -65,7 +66,10 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
-  onLoginError(error) {}
+  onLoginError(error) {
+    this.loginError = true;
+    this.errorMsg = error.error.error;
+  }
 
   isValid(nomeControle: string, form: NgForm) {
     if (!form.controls[nomeControle]) {

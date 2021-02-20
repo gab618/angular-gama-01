@@ -43,4 +43,8 @@ export class AuthService {
     }
     return null;
   }
+
+  isAuthenticated(): boolean {
+    return !!(this.getUser() && this.getToken());
+  }
 }
