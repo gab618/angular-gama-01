@@ -1,6 +1,7 @@
 import { error } from '@angular/compiler/src/util';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { LoginService } from './login.service';
 
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   loading: boolean;
   loginError: boolean;
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -55,16 +56,16 @@ export class LoginComponent implements OnInit {
         })
       )
       .subscribe(
-        (response) => {
-          console.log('sucesso');
-          console.log(response);
-        },
-        (error) => {
-          console.log('nao logou :', error);
-          this.loginError = true;
-        }
+        (response) => this.onLoginSuccess(response),
+        (error) => this.onLoginError(error)
       );
   }
+
+  onLoginSuccess(response) {
+    this.router.navigate(['home']);
+  }
+
+  onLoginError(error) {}
 
   isValid(nomeControle: string, form: NgForm) {
     if (!form.controls[nomeControle]) {

@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of, throwError, timer } from 'rxjs';
-import { delay, mergeMap } from 'rxjs/operators';
+import { Observable, of, throwError, timer } from 'rxjs';
+import { delay, mergeMap, tap } from 'rxjs/operators';
+import { AuthService } from '../shared/services/auth/auth.service';
+import { Login } from './login.interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
-  logar(email: string, password: string) {
+  logar(email: string, password: string): Observable<Login> {
     // if (email === 'gstv@caster.com' && password === '123456') {
     //   return of({
     //     user: {
@@ -33,9 +35,16 @@ export class LoginService {
     //   mergeMap(() => throwError('Usuário ou senha incorretos'))
     // );
 
-    return this.http.post('https://bolaocblol.tk/sessions', {
-      email,
-      password,
-    });
+    return this.http
+      .post<Login>('https://bolaocblol.tk/sessions', {
+        email,
+        password,
+      })
+      .pipe(
+        tap((res) => {
+          this.authService.setUser(res.user);
+          this.authService.setToken(res.token);
+        })
+      );
   }
 }
