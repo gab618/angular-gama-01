@@ -2,6 +2,7 @@
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form-signin pt5">
     <div class="p-2">
       <input
+        #emailInput
         type="email"
         class="form-control"
         placeholder="Email"
@@ -17,6 +18,7 @@
     </div>
     <div class="p-2">
       <input
+        #passwordInput
         type="password"
         class="form-control"
         placeholder="password"
