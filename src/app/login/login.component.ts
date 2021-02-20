@@ -1,6 +1,7 @@
 import { error } from '@angular/compiler/src/util';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
 import { LoginService } from './login.service';
 
 @Component({
@@ -16,6 +17,8 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
   };
+  loading: boolean;
+  loginError: boolean;
 
   constructor(private loginService: LoginService) {}
 
@@ -42,15 +45,25 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginService.logar(this.user.email, this.user.password).subscribe(
-      (response) => {
-        console.log('sucesso');
-        console.log(response);
-      },
-      (error) => {
-        console.log('nao logou :', error);
-      }
-    );
+    this.loginError = false;
+    this.loading = true;
+    this.loginService
+      .logar(this.user.email, this.user.password)
+      .pipe(
+        finalize(() => {
+          this.loading = false;
+        })
+      )
+      .subscribe(
+        (response) => {
+          console.log('sucesso');
+          console.log(response);
+        },
+        (error) => {
+          console.log('nao logou :', error);
+          this.loginError = true;
+        }
+      );
   }
 
   isValid(nomeControle: string, form: NgForm) {

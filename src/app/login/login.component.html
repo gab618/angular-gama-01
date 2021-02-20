@@ -31,10 +31,22 @@
         Senha invlaida
       </div>
     </div>
+    <div *ngIf="loginError" class="alert alert-danger" role="alert">
+      Erro no login
+    </div>
+
     <div class="p-2">
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button
+        class="btn btn-lg btn-primary btn-block"
+        type="submit"
+        [disabled]="loading"
+      >
         Entrar
       </button>
     </div>
   </form>
+
+  <div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
 </div>
