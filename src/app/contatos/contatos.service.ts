@@ -15,4 +15,8 @@ export class ContatosService {
   getContatos(): Observable<Contato[]> {
     return this.http.get<Contato[]>(`${this.API_URL}/contatos`);
   }
+
+  getContato(contactId: string): Observable<Contato> {
+    return this.http.get<Contato>(`${this.API_URL}/contatos/${contactId}`);
+  }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { finalize, take } from 'rxjs/operators';
 import { Contato } from '../contatos.interfaces';
-import { DetalhesContatoService } from './detalhes-contato.service';
+import { ContatosService } from '../contatos.service';
 
 @Component({
   selector: 'app-detalhes-contato',
@@ -17,7 +17,7 @@ export class DetalhesContatoComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private detalhesContatoService: DetalhesContatoService
+    private contatosService: ContatosService
   ) {}
 
   ngOnInit(): void {
@@ -31,8 +31,8 @@ export class DetalhesContatoComponent implements OnInit {
 
   getContactData(id: string) {
     this.loading = true;
-    this.detalhesContatoService
-      .getContactData(id)
+    this.contatosService
+      .getContato(id)
       .pipe(
         take(1),
         finalize(() => {
