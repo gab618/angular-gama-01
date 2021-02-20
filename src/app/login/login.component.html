@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div class="container text-center">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form-signin pt5">
+    <div class="p-2">
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Email"
+        name="email"
+        ngModel
+      />
+    </div>
+    <div class="p-2">
+      <input
+        type="password"
+        class="form-control"
+        placeholder="password"
+        name="password"
+        ngModel
+      />
+    </div>
+    <div class="p-2">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        Entrar
+      </button>
+    </div>
+  </form>
+</div>
