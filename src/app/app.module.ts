@@ -19,16 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-
-    LoginComponent,
-    ExtratoComponent,
-    NaoEncontradoComponent,
-    ContatosComponent,
-    DetalhesContatoComponent,
-  ],
+  declarations: [AppComponent, LoginComponent, NaoEncontradoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
