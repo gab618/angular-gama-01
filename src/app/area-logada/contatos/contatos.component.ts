@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { finalize, take } from 'rxjs/operators';
 import { Contato } from './contatos.interfaces';
 import { ContatosService } from './contatos.service';
@@ -17,7 +18,8 @@ export class ContatosComponent implements OnInit {
 
   constructor(
     private contatosService: ContatosService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -49,5 +51,22 @@ export class ContatosComponent implements OnInit {
 
   goToDetails(idContato: string) {
     this.router.navigate([`contatos/${idContato}`]);
+  }
+
+  deleteContact(idContato: string) {
+    this.contatosService.deleteContato(idContato).subscribe(
+      (response) => this.onSuccessDelete(idContato),
+      (error) => this.onErrorDelete()
+    );
+  }
+
+  onSuccessDelete(idContato) {
+    console.log('tchau');
+    this.contatos = this.contatos.filter((contato) => contato.id !== idContato);
+    this.toastr.success('F', 'Usuário apagado!');
+  }
+
+  onErrorDelete() {
+    console.log('error');
   }
 }

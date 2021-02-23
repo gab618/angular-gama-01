@@ -8,19 +8,24 @@ import { HomeComponent } from './area-logada/home/home.component';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
-import { LoginComponent } from './login/login.component';
-import { ExtratoComponent } from './area-logada/extrato/extrato.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
 import { SharedModule } from './shared/shared.module';
-import { ContatosComponent } from './area-logada/contatos/contatos.component';
-import { DetalhesContatoComponent } from './area-logada/contatos/detalhes-contato/detalhes-contato.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [AppComponent, NaoEncontradoComponent],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    SharedModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+  ],
   providers: [
     {
       provide: LOCALE_ID,
