@@ -69,4 +69,8 @@ export class ContatosComponent implements OnInit {
   onErrorDelete() {
     console.log('error');
   }
+
+  createContact() {
+    this.router.navigate(['contatos/novo']);
+  }
 }

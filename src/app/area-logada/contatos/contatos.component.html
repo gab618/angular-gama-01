@@ -10,6 +10,10 @@
     </button>
   </div>
 
+  <button class="btn btn-primary m-1" (click)="createContact()">
+    Novo contato
+  </button>
+
   <div>
     <table *ngIf="!loading && !erroNoLoad" class="table table-hover">
       <tr>
