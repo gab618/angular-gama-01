@@ -29,7 +29,34 @@ export class NovoContatoComponent implements OnInit {
     });
   }
 
+  exibeErro(nomeControle: string) {
+    // if(!this.contatoForm.controls[nomeControle]) {//a mesma coisa
+    if (!this.contatoForm.get(nomeControle)) {
+      return false;
+    }
+
+    return (
+      this.contatoForm.get(nomeControle).invalid &&
+      this.contatoForm.get(nomeControle).touched
+    );
+  }
+
+  validateAllFormFields() {
+    Object.keys(this.contatoForm.controls).forEach((field) => {
+      const control = this.contatoForm.get(field);
+      control.markAsTouched();
+    });
+  }
+
   saveContact() {
+    if (this.contatoForm.invalid) {
+      // this.contatoForm.controls.nome.markAsTouched();
+      // this.contatoForm.controls.email.markAsTouched();
+      // this.contatoForm.controls.banco.markAsTouched(); //jeito NA
+      this.validateAllFormFields();
+
+      return;
+    }
     console.log(this.contatoForm);
   }
 }
