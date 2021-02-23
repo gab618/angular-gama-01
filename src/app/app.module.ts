@@ -19,15 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, NaoEncontradoComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    // HomeComponent,
-    FormsModule,
-    SharedModule,
-    HttpClientModule,
-  ],
+  declarations: [AppComponent, NaoEncontradoComponent],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, HttpClientModule],
   providers: [
     {
       provide: LOCALE_ID,
