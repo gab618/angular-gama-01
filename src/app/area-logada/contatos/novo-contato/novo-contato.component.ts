@@ -5,6 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ContatosService } from '../contatos.service';
 
 @Component({
   selector: 'app-novo-contato',
@@ -14,18 +17,20 @@ import {
 export class NovoContatoComponent implements OnInit {
   contatoForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private contatosService: ContatosService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    // this.contatoForm = new FormGroup({
-    //   nome: new FormControl(),
-    //   banco: new FormControl(),
-    // });
-
     this.contatoForm = this.formBuilder.group({
-      nome: ['aaa', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      banco: ['', [Validators.required, Validators.minLength(3)]],
+      nome: ['', Validators.required],
+      cpf: ['', Validators.required],
+      ag: ['', [Validators.required, Validators.minLength(4)]],
+      cc: ['', [Validators.required, Validators.minLength(5)]],
+      banco: ['', Validators.required],
     });
   }
 
@@ -48,7 +53,7 @@ export class NovoContatoComponent implements OnInit {
     });
   }
 
-  saveContact() {
+  onSubmit() {
     if (this.contatoForm.invalid) {
       // this.contatoForm.controls.nome.markAsTouched();
       // this.contatoForm.controls.email.markAsTouched();
@@ -58,5 +63,23 @@ export class NovoContatoComponent implements OnInit {
       return;
     }
     console.log(this.contatoForm);
+    this.saveContact();
+  }
+
+  saveContact() {
+    this.contatosService.createContato(this.contatoForm.value).subscribe(
+      (response) => this.onSuccessSalvarContato(),
+      (error) => this.onErrorSalvarContato()
+    );
+  }
+
+  onSuccessSalvarContato() {
+    this.contatosService.createContato(this.contatoForm.value);
+    this.toastr.success('Sucesso!', 'Contato criado com sucesso.');
+    this.router.navigate(['/contatos']);
+  }
+
+  onErrorSalvarContato() {
+    this.toastr.error('Error!', 'Ta tudo quebrado.');
   }
 }

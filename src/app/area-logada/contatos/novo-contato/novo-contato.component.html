@@ -13,14 +13,14 @@
     </div>
 
     <div class="form-group">
-      <label for="email">Email</label>
+      <label for="cpf">CPF</label>
       <input
-        formControlName="email"
+        formControlName="cpf"
         type="text"
         class="form-control"
-        id="email"
-        placeholder="Email"
-        [class.is-invalid]="exibeErro('email')"
+        id="cpf"
+        placeholder="CPF"
+        [class.is-invalid]="exibeErro('cpf')"
       />
     </div>
 
@@ -36,6 +36,30 @@
       />
     </div>
 
-    <button (click)="saveContact()" class="btn btn-primary">Salvar</button>
+    <div class="form-group">
+      <label for="ag">Agência</label>
+      <input
+        formControlName="ag"
+        type="text"
+        class="form-control"
+        id="ag"
+        placeholder="Agência"
+        [class.is-invalid]="exibeErro('ag')"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="cc">Conta</label>
+      <input
+        formControlName="cc"
+        type="text"
+        class="form-control"
+        id="cc"
+        placeholder="Conta"
+        [class.is-invalid]="exibeErro('cc')"
+      />
+    </div>
+
+    <button (click)="onSubmit()" class="btn btn-primary">Salvar</button>
   </form>
 </div>
