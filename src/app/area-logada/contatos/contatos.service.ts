@@ -27,11 +27,7 @@ export class ContatosService {
   }
 
   createContato(contato: Contato) {
-    return this.http.post<Contato>(
-      `${this.API_URL}/contatos`,
-      contato,
-      this.httpOptions
-    );
+    return this.http.post<Contato>(`${this.API_URL}/contatos`, contato);
   }
 
   updateContato(id: string, contato: Contato) {
