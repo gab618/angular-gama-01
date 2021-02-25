@@ -1,5 +1,16 @@
-<div class="container pt-5">
-  <form [formGroup]="contatoForm">
+<div class="container pt-5 text-center">
+  <div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <div *ngIf="erroNoLoad">
+    <h2>Deu erro :(</h2>
+    <button class="btn btn-secondary" (click)="carregarContato()">
+      Tentar novamente
+    </button>
+  </div>
+
+  <form [formGroup]="contatoForm" *ngIf="!loading && !erroNoLoad">
     <div class="form-group">
       <label for="nome">Nome</label>
       <input
@@ -60,6 +71,8 @@
       />
     </div>
 
-    <button (click)="onSubmit()" class="btn btn-primary">Salvar</button>
+    <button (click)="onSubmit()" class="btn btn-primary">
+      {{ estaEditando() ? "Editar contato" : "Criar contato" }}
+    </button>
   </form>
 </div>

@@ -53,6 +53,10 @@ export class ContatosComponent implements OnInit {
     this.router.navigate([`contatos/${idContato}`]);
   }
 
+  goToEdit(idContato: string) {
+    this.router.navigate([`contatos/${idContato}/editar`]);
+  }
+
   deleteContact(idContato: string) {
     this.contatosService.deleteContato(idContato).subscribe(
       (response) => this.onSuccessDelete(idContato),
