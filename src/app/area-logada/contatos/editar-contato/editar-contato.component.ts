@@ -86,16 +86,20 @@ export class EditarContatoComponent implements OnInit {
     );
   }
 
-  validateAllFormFields() {
-    Object.keys(this.contatoForm.controls).forEach((field) => {
+  validateAllFormFields(form: FormGroup) {
+    Object.keys(form.controls).forEach((field) => {
       const control = this.contatoForm.get(field);
-      control.markAsTouched();
+      if (control instanceof FormControl) {
+        control.markAsTouched();
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      }
     });
   }
 
   onSubmit() {
     if (this.contatoForm.invalid) {
-      this.validateAllFormFields();
+      this.validateAllFormFields(this.contatoForm);
       return;
     }
 
